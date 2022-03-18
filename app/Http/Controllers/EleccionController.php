@@ -32,7 +32,7 @@ class EleccionController extends Controller
         $request->validate([
             'periodo' => 'required|max:200',
             'fecha' => 'required',
-            'fechaaper' => 'required',
+            'fechainicial' => 'required',
             'horaapertura' => 'required',
             'fechacierre' => 'required',
             'horacierre' => 'required',
@@ -55,11 +55,11 @@ class EleccionController extends Controller
             = array(
                 'periodo' => $request->periodo,
                 'fecha'    => $request->fecha,
-                'fechaaper'=> $fechaaper,
-                'horaapertura'   => $horaapertura,
-                'fechacierre'   => $fechacierre,
-                'horacierre'   => $horacierre,
-                'observaciones'   => $observaciones,
+                'fechainicial'=> $request->fechainicial,
+                'horaapertura'   => $request->horaapertura,
+                'fechacierre'   => $request->fechacierre,
+                'horacierre'   => $request->horacierre,
+                'observaciones'   => $request->observaciones,
             );
             $eleccion = Eleccion::create($campos);
         echo $eleccion->periodo . " se guardo correctamente ... ";
