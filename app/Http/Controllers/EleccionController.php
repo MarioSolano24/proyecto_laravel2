@@ -32,7 +32,7 @@ class EleccionController extends Controller
         $request->validate([
             'periodo' => 'required|max:200',
             'fecha' => 'required',
-            'fechainicial' => 'required',
+            'fechaapertura' => 'required',
             'horaapertura' => 'required',
             'fechacierre' => 'required',
             'horacierre' => 'required',
@@ -55,7 +55,7 @@ class EleccionController extends Controller
             = array(
                 'periodo' => $request->periodo,
                 'fecha'    => $request->fecha,
-                'fechainicial'=> $request->fechainicial,
+                'fechaapertura'=> $request->fechaapertura,
                 'horaapertura'   => $request->horaapertura,
                 'fechacierre'   => $request->fechacierre,
                 'horacierre'   => $request->horacierre,
@@ -84,7 +84,8 @@ class EleccionController extends Controller
      */
     public function edit($id)
     {
-        //
+        $eleccion = Eleccion::find($id);
+        return view('eleccion/edit', compact('eleccion'));
     }
 
     /**
@@ -96,7 +97,21 @@ class EleccionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validateData($request);
+
+       
+        $campos=[
+            'periodo' => $request->periodo,
+            'fecha'    => $request->fecha,
+            'fechainicial'=> $request->fechainicial,
+            'horaapertura'   => $request->horaapertura,
+            'fechacierre'   => $request->fechacierre,
+            'horacierre'   => $request->horacierre,
+            'observaciones'   => $request->observaciones,
+        ];
+        
+        Eleccion::whereId($id)->update($campos);
+        return redirect('eleccion')->with('success', 'Actualizado correctamente...');
     }
 
     /**

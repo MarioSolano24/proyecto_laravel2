@@ -35,9 +35,9 @@
             </div>
             
             <div class="form-group">
-                <label for="fechaincial">Fecha de Apertura:</label>
-                <input type="date" id="fechinicial"
-                 class="form-control" name="fechainicial" />
+                <label for="fechaapertura">Fecha de Apertura:</label>
+                <input type="date" id="fechaapertura"
+                 class="form-control" name="fechaapertura" />
             </div>
 
             <div class="form-group">
