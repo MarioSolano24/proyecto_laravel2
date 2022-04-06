@@ -48,6 +48,7 @@ class EleccionController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
+
     {
         $this->validateData($request);
 
@@ -103,7 +104,7 @@ class EleccionController extends Controller
         $campos=[
             'periodo' => $request->periodo,
             'fecha'    => $request->fecha,
-            'fechainicial'=> $request->fechainicial,
+            'fechaapertura'=> $request->fechaapertura,
             'horaapertura'   => $request->horaapertura,
             'fechacierre'   => $request->fechacierre,
             'horacierre'   => $request->horacierre,
@@ -122,6 +123,7 @@ class EleccionController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Eleccion::whereId($id)->delete();
+        return redirect('eleccion');
     }
 }

@@ -17,6 +17,7 @@
     <thead>
         <tr>
             <td>ID</td>
+            <td>PERIODO</td>
             <td>FECHA</td>
             <td>FECHAAPERTURA</td>
             <td>HORAAPERTURA</td>
@@ -31,22 +32,23 @@
         <tr>
             <td>{{$eleccion->id}}</td>
             <td>{{$eleccion->periodo}}</td>
-            <td>{{$eleccion->fecha}}</td>
-            <td>{{$eleccion->fechaapertura}}</td>
+            <td>{{$eleccion->fecha->format('d-m-y')}}</td>
+            <td>{{$eleccion->fechaapertura->format('d-m-y')}}</td>
             <td>{{$eleccion->horaapertura->format('H:i')}}</td>
-            <td>{{$eleccion->fechacierre}}</td>
+            <td>{{$eleccion->fechacierre->format('d-m-y')}}</td>
             <td>{{$eleccion->horacierre->format('H:i')}}</td>
             <td>{{$eleccion->observaciones}}</td>
             <td><a href="{{ route('eleccion.edit', $eleccion->id)}}"
-            class="btn btn-primary">Edit</a></td>
+            class="btn btn-primary"class="btn btn-primary" ><i class="fa fa-edit" aria-hidden="true"></i></a> </td>
             <td>
             <form action="{{ route('eleccion.destroy', $eleccion->id)}}"
             method="post">
             @csrf
             @method('DELETE')
             <button class="btn btn-danger" type="submit"
-            onclick="return confirm('Esta seguro de borrar {{$eleccion->ubicacion}}')" >Del</button>
+            onclick="return confirm('Esta seguro de borrar {{$eleccion->ubicacion}}')"><i class="fa fa-trash" aria-hidden="true"></i></button>
             </form>
+            
             </td>
         </tr>
         @endforeach
