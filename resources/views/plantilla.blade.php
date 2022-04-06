@@ -21,7 +21,7 @@
             </div>
             <div class="col-md-8 text-center">
                 <h1>Instituto Tecnológico del Valle de Oaxaca</h1>
-                <h5>Elección de la reina ITVO</h5>
+                <h5>Elección de la reina ITVO 2022</h5>
             </div>
             <div class="col-md-2">
 

@@ -8,12 +8,14 @@ use App\Models\Casilla;
 use App\Models\Eleccion;
 use App\Models\Voto;
 use App\Models\Votocandidato;
+use Exception;
 use Illuminate\Support\Facades\DB;
 
 class VotoController extends Controller
 {   
     private $DUPLICATE_KEY_CODE=23000;
-    private $DUPLICATE_KEY_MESSAGE="Ya existe un dato igual en la BD, no se permiten duplicados";
+    private $DUPLICATE_KEY_MESSAGE="Ya existe un dato igual en la BD, ". 
+            "no se permiten duplicados";
     /**
      * Display a listing of the resource.
      *
@@ -77,6 +79,7 @@ class VotoController extends Controller
             $data['evidencia']=$evidenceFileName;
             
             $message="save successfull";
+            $success=true;
             DB::beginTransaction();
             try {
                 //--- save to voto
@@ -93,6 +96,7 @@ class VotoController extends Controller
                 DB::commit();
                 
             } catch (\Exception $e) {
+                $success=false;
                 DB::rollback();
                 if ($e->getCode()==$this->DUPLICATE_KEY_CODE)
                     $message=$this->DUPLICATE_KEY_MESSAGE;
@@ -100,7 +104,7 @@ class VotoController extends Controller
                     $message=$e->getMessage();
             }
         
-        return view('errors',compact('message'));
+        return view('message',compact('message','success'));
         
     }  
 
@@ -123,12 +127,13 @@ class VotoController extends Controller
      */
     public function edit($id)
     {
-        $casillas = Casilla::all();
-        $candidatos= Candidato::all();
-        $elecciones= Eleccion::all();
-        $votocandidatos= Votocandidato::all();
-        $votos = Voto::find($id);
-        return view('voto/edit', compact('casillas','candidatos','elecciones','votocandidatos','votos'));
+        $voto= Voto::find($id);
+        if ($voto){
+            return view ('voto/edit',compact('voto'));
+        } else {
+            $message= "No se localizó voto $id";
+            return view('message',$message);
+        }
     }
 
     /**
@@ -149,7 +154,6 @@ class VotoController extends Controller
                 $candidatos[substr($key,10)]=$value;
         }
 
-
         $data['eleccion_id']=$request->eleccion_id;
         $data['casilla_id']=$request->casilla_id;
         $evidenceFileName ="";
@@ -161,30 +165,28 @@ class VotoController extends Controller
         $data['evidencia']=$evidenceFileName;
         
         $message="save successfull";
+        $success=true;
         DB::beginTransaction();
         try {
             //--- save to voto
-            $voto =Voto::create($data);
-
+            Voto::whereId($id)->update($data);
             //--- save to votocandidato
             foreach($candidatos as $key=>$value){
-                $votocandidato=[];
-                $votocandidato['voto_id']= $voto->id;
-                $votocandidato['candidato_id'] = $key;
-                $votocandidato['votos']=$value;
-                Votocandidato::create($votocandidato);
+                Votocandidato::where("voto_id","=",$id) 
+                    ->where("candidato_id","=",$key) 
+                    ->update(["votos"=>$value]);
             }
             DB::commit();
             
         } catch (\Exception $e) {
+            $success=false;
             DB::rollback();
-            if ($e->getCode()==$this->DUPLICATE_KEY_CODE)
-                $message=$this->DUPLICATE_KEY_MESSAGE;
-            else
-                $message=$e->getMessage();
+            $message=$e->getMessage();
         }
     
-    return view('errors',compact('message'));
+        return view('message',compact('message','success'));
+    
+       
     }
 
     /**
@@ -195,6 +197,19 @@ class VotoController extends Controller
      */
     public function destroy($id)
     {
-        //
+        DB::beginTransaction();
+        $success=true;
+        try {
+            Votocandidato::where('voto_id', '=', $id)->delete();
+            Voto::whereId($id)->delete();
+            DB::commit();
+            $message="Operacion exitosa";
+
+        } catch (\Exception $ex){
+            DB::rollBack();
+            $message = $ex->getMessage();
+            $success=false;
+        }     
+        return view ('message',compact('message','success'));
     }
 }

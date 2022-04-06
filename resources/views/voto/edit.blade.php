@@ -9,7 +9,7 @@
     <br />
     @endif
 </div>
-<form action="{{ route('voto.store', $voto->id)}}"
+<form action="{{ route('voto.update', $voto->id)}}"
     method="post" enctype="multipart/form-data">
     @csrf
     @method('PUT')
