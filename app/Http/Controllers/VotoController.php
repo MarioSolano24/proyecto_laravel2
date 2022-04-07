@@ -182,10 +182,12 @@ class VotoController extends Controller
             $success=false;
             DB::rollback();
             $message=$e->getMessage();
+
+           
         }
     
+       
         return view('message',compact('message','success'));
-    
        
     }
 
