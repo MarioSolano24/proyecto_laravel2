@@ -7,7 +7,7 @@
 </style>
 <div class="card uper">
     <div class="card-header">
-        votos
+    <center>Bienvenido al Registro de  Voto 2022</center>
     </div>
     <div class="card-body">
         @if ($errors->any())
