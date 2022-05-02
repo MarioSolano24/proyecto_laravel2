@@ -19,8 +19,11 @@
             </ul>
         </div><br />
         @endif
-        <form method="post" action="{{ route('candidato.store') }} " 
-        enctype="multipart/form-data">
+        <form method="post" 
+            action="{{ route('candidato.store') }} " 
+            enctype="multipart/form-data"
+            onsubmit="return validateData();">
+            
             {{ csrf_field() }}
             <div class="form-group">
                 <label for="nombrecompleto">Nombre completo:</label>
@@ -33,12 +36,14 @@
                     <option value="H">Hombre</option>
                     <option value="M">Mujer</option>
                 </select>
-       
             </div>
             <div class="form-group">
                 <label for="foto">Foto:</label>
                 <input type="file" id="foto" accept="image/png, image/jpeg" 
-                 class="form-control" name="foto" />
+                 class="form-control" name="foto" 
+                 onchange="previewImage(event,'imageCandidato');"
+                  />
+                  <img src="" id="imageCandidato" width="200px" heigth="200px">
             </div>
             <div class="form-group">
                 <label for="perfil">Perfil:</label>
@@ -46,8 +51,11 @@
                  class="form-control" name="perfil" />
             </div>
 
-            <button type="submit" class="btn btn-primary">Guardar</button>
+            <button type="submit" 
+            class="btn btn-primary">Guardar</button>
         </form>
     </div>
 </div>
+<script type="text/javascript" src="{{ URL::asset('js/custom.js') }}"></script>
+<script type="text/javascript" src="{{ URL::asset('js/validar.js') }}"></script>
 @endsection

@@ -490,6 +490,15 @@
       ),
       'reference' => '65c9faf50d567b65d81764a44526545689e3fe63',
     ),
+    'laravel/socialite' => 
+    array (
+      'pretty_version' => 'v5.5.2',
+      'version' => '5.5.2.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '68afb03259b82d898c68196cbcacd48596a9dd72',
+    ),
     'laravel/tinker' => 
     array (
       'pretty_version' => 'v2.7.0',
@@ -498,6 +507,15 @@
       array (
       ),
       'reference' => '5f2f9815b7631b9f586a3de7933c25f9327d4073',
+    ),
+    'laravel/ui' => 
+    array (
+      'pretty_version' => 'v3.4.5',
+      'version' => '3.4.5.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'f11d295de1508c5bb56206a620b00b6616de414c',
     ),
     'league/commonmark' => 
     array (
@@ -534,6 +552,15 @@
       array (
       ),
       'reference' => 'aa70e813a6ad3d1558fc927863d47309b4c23e69',
+    ),
+    'league/oauth1-client' => 
+    array (
+      'pretty_version' => 'v1.10.1',
+      'version' => '1.10.1.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'd6365b901b5c287dd41f143033315e2f777e1167',
     ),
     'mockery/mockery' => 
     array (
