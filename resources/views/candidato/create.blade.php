@@ -23,7 +23,7 @@
             action="{{ route('candidato.store') }} " 
             enctype="multipart/form-data"
             onsubmit="return validateData();">
-            
+            <!-- comment -->
             {{ csrf_field() }}
             <div class="form-group">
                 <label for="nombrecompleto">Nombre completo:</label>
@@ -48,14 +48,18 @@
             <div class="form-group">
                 <label for="perfil">Perfil:</label>
                 <input type="file" id="perfil" accept="application/pdf"
-                 class="form-control" name="perfil" />
+                class="form-control" name="perfil" onchange="return validarExt()"/>
             </div>
+            <br><br>
+			<div id="visorArchivo">
+				<!--Aqui se desplegará el fichero-->
+			</div>
 
             <button type="submit" 
             class="btn btn-primary">Guardar</button>
         </form>
     </div>
 </div>
-<script type="text/javascript" src="{{ URL::asset('js/custom.js') }}"></script>
-<script type="text/javascript" src="{{ URL::asset('js/validar.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/custom.js') }}">
+</script>
 @endsection

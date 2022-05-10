@@ -51,11 +51,17 @@
             <div class="form-group">
                 <label for="perfil">Perfil:</label>
                 <input type="file" id="perfil" accept="application/pdf"
-                 class="form-control" name="perfil" />
+                class="form-control" name="perfil" onchange="return validarExt()"/>
             </div>
+            <br><br>
+			<div id="visorArchivo">
+				<!--Aqui se desplegará el fichero-->
+			</div>
 
             <button type="submit" class="btn btn-primary">Guardar</button>
         </form>
     </div>
 </div>
+<script type="text/javascript" src="{{ asset('js/custom.js') }}">
+</script>
 @endsection
