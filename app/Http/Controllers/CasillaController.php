@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 use App\Models\Casilla;
+use Barryvdh\DomPDF\Facade as PDF;
 
 
 class CasillaController extends Controller
@@ -107,4 +107,26 @@ class CasillaController extends Controller
         Casilla::whereId($id)->delete();
         return redirect('casilla');
     }
+
+    public function generatepdf()
+    {
+        $casillas = Casilla::all();
+        $pdf = PDF::loadView('casilla/list', ['casillas'=>$casillas]);
+        return $pdf->stream('archivo.pdf');
+
+       /* $html = "<div style='text-align:center;'><h1>PDF generado desde etiquetas html</h1>
+                    <br><h3>&copy;Mario.dev</h3> </div>";
+                    $pdf = PDF::loadHTML($html);
+                    return $pdf->stream('archivo.pdf');*/
+
+                 /*   $html="<style>
+                    .page-break {page-break-after: always;}
+                    </style><h1>Pagina 1</h1><div class='page-break'></div>
+                        <h1>Pagina 2</h1>";
+                        $pdf = PDF::loadHTML($html);
+                        return $pdf->stream('archivo.pdf');*/
+
+                     
+                    }
+
 }

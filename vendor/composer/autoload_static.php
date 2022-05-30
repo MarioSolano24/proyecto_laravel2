@@ -42,6 +42,12 @@ class ComposerStaticInitf71e22475d08c5994f5a87e8dd4373f4
         array (
             'phpDocumentor\\Reflection\\' => 25,
         ),
+        'm' => 
+        array (
+            'mikehaertl\\wkhtmlto\\' => 20,
+            'mikehaertl\\tmp\\' => 15,
+            'mikehaertl\\shellcommand\\' => 24,
+        ),
         'W' => 
         array (
             'Whoops\\' => 7,
@@ -195,6 +201,18 @@ class ComposerStaticInitf71e22475d08c5994f5a87e8dd4373f4
             0 => __DIR__ . '/..' . '/phpdocumentor/reflection-common/src',
             1 => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src',
             2 => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src',
+        ),
+        'mikehaertl\\wkhtmlto\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/mikehaertl/phpwkhtmltopdf/src',
+        ),
+        'mikehaertl\\tmp\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/mikehaertl/php-tmpfile/src',
+        ),
+        'mikehaertl\\shellcommand\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/mikehaertl/php-shellcommand/src',
         ),
         'Whoops\\' => 
         array (
@@ -593,6 +611,7 @@ class ComposerStaticInitf71e22475d08c5994f5a87e8dd4373f4
         'App\\Http\\Controllers\\CasillaController' => __DIR__ . '/../..' . '/app/Http/Controllers/CasillaController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Controllers\\EleccionController' => __DIR__ . '/../..' . '/app/Http/Controllers/EleccionController.php',
+        'App\\Http\\Controllers\\PDFController' => __DIR__ . '/../..' . '/app/Http/Controllers/PDFController.php',
         'App\\Http\\Controllers\\VotoController' => __DIR__ . '/../..' . '/app/Http/Controllers/VotoController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\Authenticate' => __DIR__ . '/../..' . '/app/Http/Middleware/Authenticate.php',
@@ -6173,6 +6192,11 @@ class ComposerStaticInitf71e22475d08c5994f5a87e8dd4373f4
         'Whoops\\Util\\Misc' => __DIR__ . '/..' . '/filp/whoops/src/Whoops/Util/Misc.php',
         'Whoops\\Util\\SystemFacade' => __DIR__ . '/..' . '/filp/whoops/src/Whoops/Util/SystemFacade.php',
         'Whoops\\Util\\TemplateHelper' => __DIR__ . '/..' . '/filp/whoops/src/Whoops/Util/TemplateHelper.php',
+        'mikehaertl\\shellcommand\\Command' => __DIR__ . '/..' . '/mikehaertl/php-shellcommand/src/Command.php',
+        'mikehaertl\\tmp\\File' => __DIR__ . '/..' . '/mikehaertl/php-tmpfile/src/File.php',
+        'mikehaertl\\wkhtmlto\\Command' => __DIR__ . '/..' . '/mikehaertl/phpwkhtmltopdf/src/Command.php',
+        'mikehaertl\\wkhtmlto\\Image' => __DIR__ . '/..' . '/mikehaertl/phpwkhtmltopdf/src/Image.php',
+        'mikehaertl\\wkhtmlto\\Pdf' => __DIR__ . '/..' . '/mikehaertl/phpwkhtmltopdf/src/Pdf.php',
         'phpDocumentor\\Reflection\\DocBlock' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/DocBlock.php',
         'phpDocumentor\\Reflection\\DocBlockFactory' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/DocBlockFactory.php',
         'phpDocumentor\\Reflection\\DocBlockFactoryInterface' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/DocBlockFactoryInterface.php',

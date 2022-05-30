@@ -3,19 +3,22 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Providers\RouteServiceProvider;
+use Illuminate\Http\Request;
 use Laravel\Socialite\Facades\Socialite as Socialite;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 
+
 class LoginController extends Controller
 {
-    /**
+   /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
+
+     use AuthenticatesUsers;
     public function index()
     {
         return view('auth/login');
@@ -83,13 +86,14 @@ class LoginController extends Controller
         {  
             $auth_user = Socialite::driver('facebook')->user(); // Fetch authenticated user
             //dd($auth_user);
-            return redirect("/candidato");
+            return redirect("/menu");
 
         } 
 
     public function logout(Request $request)
     {
-        Auth::logout();
+        
+        \Auth::logout();
 
         $request->session()->invalidate();
 
@@ -108,4 +112,5 @@ class LoginController extends Controller
     {
         //
     }
+   
 }
